@@ -1,9 +1,6 @@
 // Declare app level module
 var app = angular.module(_APP_NAME_, [
 
-  'ui',
-  'ngCookies',
-  'ngResource', 
   _CONTROLLERS_,
   _DIRECTIVES_,
   _FILTERS_,
@@ -31,7 +28,7 @@ var app = angular.module(_APP_NAME_, [
     // $locationProvider.html5Mode(true);
   }
 ]).run([
-  '$rootScope'
+  '$rootScope',
   function($rootScope) {
 
     // initial run cycle

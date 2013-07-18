@@ -16,7 +16,7 @@ var pg = {
     var _this = this;
    
     angular.element(document).ready(function(){
-      angular.bootstrap(document, ['wunwun']);
+      angular.bootstrap(document, [_APP_NAME_]);
     });
 
   }

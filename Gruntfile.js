@@ -22,9 +22,8 @@ module.exports = function(grunt) {
         css: {
           // place all vendor CSS here (via Bower)
           vendor: [
-            '<%= srcDir %>/components/angular-ui/build/angular-ui.css',
-            '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/css/font-awesome.css',
-            '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/css/font-awesome-ie7.css'
+            '<%= srcDir %>/components/font-awesome/css/font-awesome.css',
+            '<%= srcDir %>/components/font-awesome/css/font-awesome-ie7.css'
           ],
           // leave this alone
           src: [
@@ -44,10 +43,6 @@ module.exports = function(grunt) {
             // add any Bower components here.
             '<%= srcDir %>/components/lodash/lodash.js',
             '<%= srcDir %>/components/angular/angular.js',
-            '<%= srcDir %>/components/angular-cookies/angular-cookies.js',
-            '<%= srcDir %>/components/angular-resource/angular-resource.js',
-            '<%= srcDir %>/components/angular-localstorage/localStorageModule.js',
-            '<%= srcDir %>/components/Swipe/swipe.js'
           ],
           src: [
             '<%= buildDir %>/js/vendor.js',
@@ -65,10 +60,8 @@ module.exports = function(grunt) {
       },
       production: {
         css: [
-          '<%= srcDir %>/components/angular-ui/build/angular-ui.css',
-          '<%= builtResourcesDir %>/css/bootstrap.css',
-          '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/css/font-awesome.css',
-          '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/css/font-awesome-ie7.css',
+          '<%= srcDir %>/components/font-awesome/css/font-awesome.css',
+          '<%= srcDir %>/components/font-awesome/css/font-awesome-ie7.css',
           '<%= tmpDir %>/css/app.css'
         ],
         js: [
@@ -82,10 +75,6 @@ module.exports = function(grunt) {
           // add any Bower components here.
           '<%= srcDir %>/components/lodash/lodash.js',
           '<%= srcDir %>/components/angular/angular.js',
-          '<%= srcDir %>/components/angular-cookies/angular-cookies.js',
-          '<%= srcDir %>/components/angular-resource/angular-resource.js',
-          '<%= srcDir %>/components/angular-localstorage/localStorageModule.js',
-          '<%= srcDir %>/components/Swipe/swipe.js'
 
           // leave these alone
           '<%= tmpDir %>/js/config/application.js',
@@ -147,7 +136,7 @@ module.exports = function(grunt) {
           { expand: true, cwd: '<%= srcDir %>/js/', src: ['*.js'], dest: '<%= tmpDir %>/js/' },
           { expand: true, cwd: '<%= srcDir %>/js/config', src: ['*.js', '!production.js'], dest: '<%= tmpDir %>/js/config' },
           { expand: true, cwd: '<%= srcDir %>/html/partials/', src: ['**'], dest: '<%= buildDir %>/js/partials/' },
-          { expand: true, cwd: '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/font/', src: ['**'], dest: '<%= buildDir %>/font/' }
+          { expand: true, cwd: '<%= srcDir %>/components/font-awesome/font/', src: ['**'], dest: '<%= buildDir %>/font/' }
         ]
       },
       production: {
@@ -156,7 +145,7 @@ module.exports = function(grunt) {
           { expand: true, cwd: '<%= srcDir %>/js/', src: ['*.js'], dest: '<%= tmpDir %>/js/' },
           { expand: true, cwd: '<%= srcDir %>/js/config', src: ['*.js', '!development.js'], dest: '<%= tmpDir %>/js/config' },
           { expand: true, cwd: '<%= srcDir %>/html/partials/', src: ['**'], dest: '<%= releaseDir %>/js/partials/' },
-          { expand: true, cwd: '<%= srcDir %>/components/font-awesome/build/assets/font-awesome/font/', src: ['**'], dest: '<%= releaseDir %>/font/' }
+          { expand: true, cwd: '<%= srcDir %>/components/font-awesome/font/', src: ['**'], dest: '<%= releaseDir %>/font/' }
         ]
       },
       tmp_to_build: {
@@ -216,11 +205,11 @@ module.exports = function(grunt) {
           banner: "'use strict';\n\n"
         },
         files: {
-          '<%= tmpDir %>/js/modules.js'    : '<%= srcDir %>/js/modules/*.js',
-          '<%= tmpDir %>/js/controllers.js': '<%= srcDir %>/js/controllers/*.js',
-          '<%= tmpDir %>/js/directives.js' : ['<%= srcDir %>/js/directives/*.js', '<%= srcDir %>/js/directives/**/*.js'],
-          '<%= tmpDir %>/js/filters.js'    : '<%= srcDir %>/js/filters/*.js',
-          '<%= tmpDir %>/js/services.js'   : '<%= srcDir %>/js/services/*.js'
+          '<%= tmpDir %>/js/modules.js'     : ['<%= srcDir %>/js/modules/*.js', '<%= srcDir %>/js/modules/**/*.js'],
+          '<%= tmpDir %>/js/controllers.js' : ['<%= srcDir %>/js/controllers/*.js', '<%= srcDir %>/js/controllers/**/*.js'],
+          '<%= tmpDir %>/js/directives.js'  : ['<%= srcDir %>/js/directives/*.js', '<%= srcDir %>/js/directives/**/*.js'],
+          '<%= tmpDir %>/js/filters.js'     : ['<%= srcDir %>/js/filters/*.js', '<%= srcDir %>/js/filters/**/*.js'],
+          '<%= tmpDir %>/js/modules.js'     : ['<%= srcDir %>/js/modules/*.js', '<%= srcDir %>/js/modules/**/*.js']
         }
       },
       production: {
@@ -234,8 +223,8 @@ module.exports = function(grunt) {
     // ngmin for pre-minifying AngularJS apps
     ngmin: {
       routers: {
-        src: '<%= tmpDir %>/js/routers.js',
-        dest: '<%= tmpDir %>/js/routers.js'
+        src: '<%= tmpDir %>/js/config/routes.js',
+        dest: '<%= tmpDir %>/js/config/routes.js'
       },
       controllers: {
         src: '<%= tmpDir %>/js/controllers.js',
@@ -308,7 +297,7 @@ module.exports = function(grunt) {
 
     buildIndex: {
       options: {
-        layout: '<%= srcDir %>/html/layout.tmpl',
+        layout: '<%= srcDir %>/html/layouts/application.tmpl',
       },
       development: {
         options: {
@@ -365,7 +354,7 @@ module.exports = function(grunt) {
         });
 
     // generate main index.html file
-    grunt.file.write(opts.dest, header + footer);
+    grunt.file.write(opts.dest, layout);
     grunt.log.write('Generating ' + opts.dest + '...').ok();
 
   });
@@ -414,3 +403,4 @@ module.exports = function(grunt) {
 
   });
 
+};
