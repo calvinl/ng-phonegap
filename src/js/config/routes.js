@@ -18,11 +18,11 @@ var app = angular.module(_APP_NAME_, [
 
     // default routes
     $routeProvider
-      .when('/example', {
-        templateUrl: 'js/partials/example.html',
-        controller: 'ExampleController'
+      .when('/', {
+        templateUrl: 'js/partials/home/home.html',
+        controller: 'HomeController'
       })
-      .otherwise({ redirectTo: '/example' });
+      .otherwise({ redirectTo: '/' });
 
     // uncomment if you want real urls without hashbang
     // $locationProvider.html5Mode(true);

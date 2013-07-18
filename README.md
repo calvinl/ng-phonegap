@@ -3,9 +3,26 @@
 A workflow for building kick-ass mobile apps using PhoneGap and
 AngularJS.
 
-# Developer Notes
-
 ## Getting Started
+
+### Requirements
+
+    To use this tool, you'll need the following installed: `npm`, `Grunt`, `PhoneGap` (install instructions below).
+
+### Install PhoneGap/Cordova
+
+[Follow instructions here](http://docs.phonegap.com/en/2.9.0/guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface)
+to install PhoneGap/Cordova and to generate a new project.
+
+### Installing Dev Dependencies
+
+After you've created a PhoneGap project, navigate to the folder and run
+the following command:x1
+
+Next, run the following line:
+
+    npm install && bower install && grunt build:development
+
 
 ### XCode Settings
 
@@ -30,11 +47,7 @@ your `grunt` binary is located. In most cases you'll be using nvm
 so locate the path to that. Use `which grunt` to locate your
 grunt binary.
 
-### Installing Dev Dependencies
-
-Next, run the following line:
-
-    npm install && bower install && grunt build:development
+### Get Started
 
 Start the server:
 
