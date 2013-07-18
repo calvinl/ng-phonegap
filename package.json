@@ -3,6 +3,7 @@
   "description": "A workflow for building applications with AngularJS for PhoneGap.",
   "version": "1.0.0",
   "devDependencies": {
+    "bower": "~0.10.0",
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.1.2",
