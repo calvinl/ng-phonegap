@@ -6,12 +6,12 @@
 
 module.exports = function(grunt) {
 
+  var _APP_NAME_ = "CHANGE ME IN Gruntfile.js";
+
   // initial grunt configuration
   grunt.initConfig({
 
-    appName: 'WunWun',
     pkg: grunt.file.readJSON('package.json'),
-
     appDir: 'www',
     tmpDir: 'tmp',
     srcDir: 'src',
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         vendor: [
 
           // Add additional Bower components here
-          '<%= bowerDir %>/bootstrap/dist/bootstrap.css',
+          '<%= bowerDir %>/bootstrap/dist/css/bootstrap.css',
           '<%= bowerDir %>/font-awesome/css/font-awesome.css'
 
         ],
@@ -365,7 +365,7 @@ module.exports = function(grunt) {
       , css = this.files[0].src
       , js = this.files[1].src
       , layout = grunt.template.process(grunt.file.read(opts.layout), {
-          data: { env: target, js: js, css: css, appName: 'WunWun' }
+          data: { env: target, js: js, css: css, appName: _APP_NAME_ }
         });
 
     // generate main index.html file
@@ -382,7 +382,7 @@ module.exports = function(grunt) {
       , version = this.args[0] || '';
 
     var template = grunt.template.process(grunt.file.read(opts.template), {
-          data: { target: target, version: version, appName: 'WunWun' }
+          data: { target: target, appName: _APP_NAME_ }
         });
 
     // generate main index.html file
@@ -442,14 +442,10 @@ module.exports = function(grunt) {
 
     // build cordova config.xml file, uses target so we
     // can switch from production to enterprise for bundle ID
-    grunt.task.run('config:' + target + (version !== undefined ? (":" + version) : ''));
+    grunt.task.run('config:' + target);
 
     // build main index.html file last
     grunt.task.run('layouts:' + env);
-
-    if (version == undefined) {
-      console.warn("\nWARNING: No version number included. e.g. grunt build:enterprise:2.0\n");
-    }
 
   });
 
