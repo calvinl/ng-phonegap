@@ -1,13 +1,12 @@
 # Angular PhoneGap
 
-A workflow for building kick-ass mobile apps using PhoneGap and
-AngularJS.
+A workflow for building kick-ass mobile apps using PhoneGap and AngularJS. This README is biased toward iOS apps on PhoneGap, but it will aim to be platform-agnostic in the future.
 
 ## Getting Started
 
 ### Requirements
 
-To use this tool, you'll need the following installed: `npm`, `grunt`, and `cordova` (install instructions below).
+To use this tool, you'll need the following installed: `npm`, `grunt`, and `cordova` (3.0). Follow the instructions below. You'll also need XCode for iOS.
 
 ### Install the Grunt CLI
 
@@ -23,8 +22,12 @@ Bower is a package manager like NPM, mostly used for front-end components (like 
 
 ### Install PhoneGap/Cordova
 
-[Follow instructions here](http://docs.phonegap.com/en/2.9.0/guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface)
-to install PhoneGap/Cordova and to generate a new project.
+[Follow instructions here](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface)
+to install PhoneGap/Cordova.
+
+Then, generate a new cordova project:
+
+    cordova 
 
 ### Installing Dev Dependencies
 
