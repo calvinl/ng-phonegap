@@ -225,4 +225,5 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
-`1.0.0`  | `08-30-13` | Initial version.
+`1.0.1`  | `08-30-13` | Re-release as a simple workflow instead of npm module.
+`1.0.0`  | `07-30-13` | Initial version.
