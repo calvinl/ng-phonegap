@@ -67,6 +67,22 @@ Start the server:
 
     scripts/web-server.js
 
+Navigate to:
+
+    http://localhost:8000/www/index.html
+
+Developing in a Webkit-based browser is best. When you're ready to test
+your app in the simulator or on a device, either fire off:
+
+    phonegap run ios
+
+Or open up XCode and build the project from there. 
+
+You should see "It's working!". You can now start developing your
+app!
+
+### Start Building
+
 Start Grunt's `watch` process to build on-the-fly. See `Gruntfile.js`
 for more information. Modifying files should happen inside the `src/`
 directory, not the `build/` directory.
@@ -95,19 +111,6 @@ production. It will also use the the file in
 up things like API routes and/or public keys that differ
 per-environment.
 
-Navigate to:
-
-    http://localhost:8000/www/index.html
-
-Developing in a Webkit-based browser is best. When you're ready to test
-your app in the simulator or on a device, either fire off:
-
-    phonegap run ios
-
-Or open up XCode and build the project from there. 
-
-You should see "It's working!". You can now start developing your
-app!
 
 ### Directory Structure
 
@@ -176,9 +179,6 @@ after downloading your repository.
 any Bower components you want into the `assets.css` and `assets.js`
 properties. Angular, Bootstrap 3, and Font-Awesome are already
 added for you.
-
-
-## Writing kick ass code.
 
 
 ## Some Conventions to Keep in Mind
