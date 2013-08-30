@@ -67,6 +67,22 @@ Start the server:
 
     scripts/web-server.js
 
+Navigate to:
+
+    http://localhost:8000/www/index.html
+
+Developing in a Webkit-based browser is best. When you're ready to test
+your app in the simulator or on a device, either fire off:
+
+    phonegap run ios
+
+Or open up XCode and build the project from there. 
+
+You should see "It's working!". You can now start developing your
+app!
+
+### Start Building
+
 Start Grunt's `watch` process to build on-the-fly. See `Gruntfile.js`
 for more information. Modifying files should happen inside the `src/`
 directory, not the `build/` directory.
@@ -95,19 +111,6 @@ production. It will also use the the file in
 up things like API routes and/or public keys that differ
 per-environment.
 
-Navigate to:
-
-    http://localhost:8000/www/index.html
-
-Developing in a Webkit-based browser is best. When you're ready to test
-your app in the simulator or on a device, either fire off:
-
-    phonegap run ios
-
-Or open up XCode and build the project from there. 
-
-You should see "It's working!". You can now start developing your
-app!
 
 ### Directory Structure
 
@@ -178,9 +181,6 @@ properties. Angular, Bootstrap 3, and Font-Awesome are already
 added for you.
 
 
-## Writing kick ass code.
-
-
 ## Some Conventions to Keep in Mind
 
 There are certain conventions to keep in mind. When creating a
@@ -225,5 +225,6 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
+`1.0.2`  | `08-30-13` | Hotfixes.
 `1.0.1`  | `08-30-13` | Re-release as a simple workflow instead of npm module.
 `1.0.0`  | `07-30-13` | Initial version.
