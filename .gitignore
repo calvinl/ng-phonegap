@@ -30,3 +30,9 @@ vendor/
 
 # xcode userdata
 xcuserdata
+
+# phonegap stuff
+.cordova/
+platforms
+merges
+plugins

@@ -22,11 +22,13 @@ module.exports = function(grunt) {
     assets: {
       css: {
         vendor: [
-          '<%= bowerDir %>/angular-ui/build/angular-ui.css',
-          '<%= bowerDir %>/bootstrap/dist/css/bootstrap.css',
-          '<%= bowerDir %>/font-awesome/css/font-awesome.css',
-          '<%= bowerDir %>/font-awesome/css/font-awesome-ie7.css'
+
+          // Add additional Bower components here
+          '<%= bowerDir %>/bootstrap/dist/bootstrap.css',
+          '<%= bowerDir %>/font-awesome/css/font-awesome.css'
+
         ],
+        // shouldn't need to touch this
         src: [
           '<%= appDir %>/css/vendor.css',
           '<%= appDir %>/css/app.css'
@@ -35,14 +37,11 @@ module.exports = function(grunt) {
       js: {
         vendor: [
           // add any Bower components here.
-          '<%= bowerDir %>/angular-unstable/angular.js',
-          '<%= bowerDir %>/angular-ui/build/angular-ui.js',
-          '<%= bowerDir %>/angular-cookies/angular-cookies.js',
-          '<%= bowerDir %>/angular-resource/angular-resource.js',
-          '<%= bowerDir %>/angular-localstorage/src/localStorage.js',
-          '<%= bowerDir %>/restangular/dist/restangular.js',
-          '<%= bowerDir %>/hammerjs/dist/hammer.js'
+          '<%= bowerDir %>/angular/angular.js',
+          '<%= bowerDir %>/angular-route/angular-route.js',
+          '<%= bowerDir %>/angular-touch/angular-touch.js'
         ],
+        // shouldn't need to touch this.
         src: [
           '<%= appDir %>/js/vendor.js',
           '<%= appDir %>/js/pg.js',
@@ -260,14 +259,14 @@ module.exports = function(grunt) {
     watch: {
       root: {
         files: ['<%= srcDir %>/*'],
-        tasks: ['copy:config', 'shell:cordova']
+        tasks: ['copy:config']
       },
       scripts: {
         files: ['<%= srcDir %>/js/**','<%= srcDir %>/js/*'],
         tasks: [
           'clean:js', 'concat:angular', 'concat:vendor',
           'copy:development', 'copy:config', 'copy:vendor',
-          'copy:tmp_to_build', 'shell:cordova'
+          'copy:tmp_to_build'
         ]
       },
       less: {
@@ -277,24 +276,24 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'clean:css', 'concat:vendor', 'copy:vendor',
-          'less:development', 'shell:cordova'
+          'less:development'
         ]
       },
       img: {
         files: ['<%= srcDir %>/img/**'],
-        tasks: ['clean:img', 'copy:img', 'shell:cordova']
+        tasks: ['clean:img', 'copy:img']
       },
       fonts: {
         files: ['<%= srcDir %>/font/**'],
-        tasks: ['clean:fonts', 'copy:fonts', 'shell:cordova']
+        tasks: ['clean:fonts', 'copy:fonts']
       },
       partials: {
         files: ['<%= srcDir %>/html/partials/**'],
-        tasks: ['clean:partials', 'copy:partials', 'shell:cordova']
+        tasks: ['clean:partials', 'copy:partials']
       },
       layouts: {
         files: ['<%= srcDir %>/html/layouts/**'],
-        tasks: ['layouts:development', 'shell:cordova']
+        tasks: ['layouts:development']
       }
     },
 
@@ -331,17 +330,6 @@ module.exports = function(grunt) {
       enterprise: {},
       production: {},
       development: {}
-    },
-
-
-    // shell commands to run
-    shell: {
-      cordova: {
-        command: 'cordova prepare',
-        options: {
-          stdout: true
-        }
-      }
     },
 
 
@@ -458,9 +446,6 @@ module.exports = function(grunt) {
 
     // build main index.html file last
     grunt.task.run('layouts:' + env);
-
-    // run cordova prepare to prep ios platform
-    grunt.task.run('shell:cordova');
 
     if (version == undefined) {
       console.warn("\nWARNING: No version number included. e.g. grunt build:enterprise:2.0\n");
