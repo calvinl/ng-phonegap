@@ -29,8 +29,6 @@ var pg = {
 
     var _this = this;
 
-    console.log("DEVICE READY");
-   
     angular.element(document).ready(function(){
       angular.bootstrap(document, [_APP_]);
     });
