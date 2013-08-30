@@ -1,13 +1,9 @@
 {
-  "name": "",
-  "description": "Your Description",
+  "name": "App Name",
+  "description": "App Description",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "~1.0.7",
-    "font-awesome": "~3.2.1",
-    "lesshat": "~1.1.1",
-    "lodash": "~1.3.1",
-    "normalize-css": "~2.1.2"
+    "angular": "~1.2.0-rc1"
   }
 }
 

@@ -23,12 +23,10 @@ node_modules/
 build/
 release/
 tmp/
-builtResources/
 www/
 
 # bower components
-src/components/
+vendor/
 
 # xcode userdata
 xcuserdata
-

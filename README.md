@@ -7,7 +7,19 @@ AngularJS.
 
 ### Requirements
 
-    To use this tool, you'll need the following installed: `npm`, `Grunt`, `PhoneGap` (install instructions below).
+To use this tool, you'll need the following installed: `npm`, `grunt`, and `cordova` (install instructions below).
+
+### Install the Grunt CLI
+
+Install the [grunt](http://gruntjs.com) command line interface:
+
+    npm install -g grunt-cli
+
+### Install Bower
+
+Bower is a package manager like NPM, mostly used for front-end components (like jQuery).
+
+    npm install -g bower
 
 ### Install PhoneGap/Cordova
 
@@ -17,41 +29,18 @@ to install PhoneGap/Cordova and to generate a new project.
 ### Installing Dev Dependencies
 
 After you've created a PhoneGap project, navigate to the folder and run
-the following command:x1
+the following command:
 
 Next, run the following line:
 
     npm install && bower install && grunt build:development
 
 
-### XCode Settings
-
-Create an `environment.plist` in your home directory:
-
-    mkdir ~/.MacOSX/
-    touch ~/.MacOSX/environment.plist
-
-Add the following into `environment.plist`
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-    	<key>NVM_BIN_PATH</key>
-    	<string>/path/to/your/nvm/bin</string>
-    </dict>
-    </plist>
-
-In the above, replace `/path/to/your/nvm/bin` with the path where 
-your `grunt` binary is located. In most cases you'll be using nvm
-so locate the path to that. Use `which grunt` to locate your
-grunt binary.
-
 ### Get Started
 
 Start the server:
 
-    ./scripts/web-server.js
+    cordova serve ios
 
 Start Grunt's `watch` process to build on-the-fly. See `Gruntfile.js`
 for more information. Modifying files should happen inside the `src/`
@@ -61,7 +50,7 @@ directory, not the `build/` directory.
 
 Navigate to:
 
-    http://localhost:8000/build/app/index.html    
+    http://localhost:8000
 
 ## ngmin 
 
@@ -88,4 +77,4 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
-`1.0.0`  | `07-17-13` | Initial version.
+`1.0.0`  | `08-30-13` | Initial version.
