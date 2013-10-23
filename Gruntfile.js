@@ -18,7 +18,14 @@ module.exports = function(grunt) {
     bowerDir: 'vendor',
     vendorDir: 'src/js/vendor',
     releaseDir: '<%= appDir %>',
-
+    connect: {
+    	server: {
+    		options: {
+    			port: 9001,
+    			base: '<%= appDir %>'
+    		}
+    	}
+    },
     assets: {
       css: {
         vendor: [
@@ -353,9 +360,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-shell');
 
+  grunt.registerTask('dev', ['build:development', 'connect', 'watch']);
 
   // build HTML files based on target
   grunt.registerMultiTask('layouts', 'Builds an HTML file for angular.', function() {
