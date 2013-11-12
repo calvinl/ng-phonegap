@@ -56,8 +56,6 @@ logo.
 After you've created a PhoneGap project, navigate to the folder
 and run the following command:
 
-Next, run the following line:
-
     npm install && bower install && grunt build:development
 
 
