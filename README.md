@@ -1,8 +1,8 @@
 # Angular PhoneGap
 
 An opinionated workflow for building kick-ass mobile apps using
- PhoneGap and AngularJS. This README is biased toward iOS apps
- on PhoneGap, but it will aim to be platform-agnostic in the
+ Cordova and AngularJS. This README is biased toward iOS apps
+ on Cordova, but it will aim to be platform-agnostic in the
  future.
 
 ## Getting Started
@@ -10,8 +10,8 @@ An opinionated workflow for building kick-ass mobile apps using
 ### Requirements
 
 To use this tool, you'll need the following installed:
- `npm`, `grunt`, and `cordova` (3.0). Follow the instructions
- below. You'll also need XCode for iOS.
+ `npm`, `grunt`, and `cordova` (3.3.0 at this time of this writing).
+ Follow the instructions below. You'll also need XCode for iOS.
 
 ### Install the Grunt CLI
 
@@ -26,15 +26,14 @@ Bower is a package manager like NPM, mostly used for front-end
 
     npm install -g bower
 
-### Install the PhoneGap CLI
+### Install the Cordova CLI
 
-[Follow instructions here](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface)
-to install PhoneGap/Cordova.
+    npm install -g cordova
 
 Then, navigate to this repo's root directory, and generate a
-new phonegap project:
+new cordova project:
 
-    phonegap create . com.example.hello HelloWorld
+    cordova create . com.example.hello HelloWorld
 
 This will add relevant files into your project directory:
 
@@ -46,14 +45,14 @@ This will add relevant files into your project directory:
 
 You can now run the following command:
 
-    phonegap run ios
+    cordova run ios
 
-This should fire up your iOS Simulator and display a Phonegap
+This should fire up your iOS Simulator and display a Cordova
 logo.
 
 ### Installing Dev Dependencies
 
-After you've created a PhoneGap project, navigate to the folder
+After you've created a Cordova project, navigate to the folder
 and run the following command:
 
     npm install && bower install && grunt build:development
@@ -63,7 +62,7 @@ and run the following command:
 
 Start the server:
 
-    scripts/web-server.js
+    grunt connect
 
 Navigate to:
 
@@ -72,7 +71,7 @@ Navigate to:
 Developing in a Webkit-based browser is best. When you're ready to test
 your app in the simulator or on a device, either fire off:
 
-    phonegap run ios
+    cordova run ios
 
 Or open up XCode and build the project from there. 
 
@@ -89,7 +88,7 @@ directory, not the `build/` directory.
 
 When you change any file in the `src/` directory, grunt will notice and
 recompile the proper files and place them into the `www/` directory. The
-`www` directory is then later used by phonegap to prepare the
+`www` directory is then later used by cordova to prepare the
 application to be copied over to the device (or simulator).
 
 `grunt watch` will only watch for files you change and only build out
@@ -116,37 +115,37 @@ The `src/` directory is your main AngularJS project folder. It consists
 of several directories and initial files of interest:
 
     src/
-      css/                   <-- For all LESS files.
-        common/              <-- Place all CSS rules that are
+      |- css/                   <-- For all LESS files.
+        |- common/              <-- Place all CSS rules that are
                                  project-wide.
-          base.less          <-- Main css file.
-        config/              <-- Place LESS configuration files here,
+          |- base.less          <-- Main css file.
+        |- config/              <-- Place LESS configuration files here,
                                  e.g. files with variables.
-          colors.less        <-- Example configuration file for color
+          |- colors.less        <-- Example configuration file for color
                                  variables.
-      html/
-        layouts/            
-          application.tmpl   <-- Main application layout.
-        partials/            <-- All view files loaded
-          home/
-            index.html       <-- Example view file.
-      img/                   <-- for images.
-      js/
-        config/              <-- Configuration root. Place all `.config` run
+      |- html/
+        |- layouts/            
+          |- application.tmpl   <-- Main application layout.
+        |- partials/            <-- All view files loaded
+          |- home/
+            |- index.html       <-- Example view file.
+      |- img/                   <-- for images.
+      |- js/
+        |- config/              <-- Configuration root. Place all `.config` run
                                  methods here, e.g. router.js below.
-          environments/
-            development.js   <-- Development environment global vars.
-            production.js    <-- Production environment global vars.
-          router.js          <-- Main routes.
-          sanitizer.js       <-- Main $compileProvider for link sanitation.
-        controllers/         <-- all Angular controllers
-          home_controller.js <-- Example controller
-        directives/          <-- All directives
-        filters/             <-- All filters
-        modules              <-- All modules
-        services/            <-- All services
-        app.js               <-- Main Angular initialization file.
-        pg.js                <-- PhoneGap initialization class.
+          |- environments/
+            |- development.js   <-- Development environment global vars.
+            |- production.js    <-- Production environment global vars.
+          |- router.js          <-- Main routes.
+          |- sanitizer.js       <-- Main $compileProvider for link sanitation.
+        |- controllers/         <-- all Angular controllers
+          |- home_controller.js <-- Example controller
+        |- directives/          <-- All directives
+        |- filters/             <-- All filters
+        |- modules              <-- All modules
+        |- services/            <-- All services
+        |- app.js               <-- Main Angular initialization file.
+        |- pg.js                <-- PhoneGap initialization class.
 
 
 ### bower.json
