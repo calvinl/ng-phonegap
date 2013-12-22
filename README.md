@@ -1,8 +1,8 @@
 # Angular PhoneGap
 
 An opinionated workflow for building kick-ass mobile apps using
- PhoneGap and AngularJS. This README is biased toward iOS apps
- on PhoneGap, but it will aim to be platform-agnostic in the
+ Cordova and AngularJS. This README is biased toward iOS apps
+ on Cordova, but it will aim to be platform-agnostic in the
  future.
 
 ## Getting Started
@@ -10,8 +10,10 @@ An opinionated workflow for building kick-ass mobile apps using
 ### Requirements
 
 To use this tool, you'll need the following installed:
- `npm`, `grunt`, and `cordova` (3.0). Follow the instructions
- below. You'll also need XCode for iOS.
+`npm`, `grunt`, `cordova` (3.3.0 at this time of this writing).
+Follow the instructions below. You'll also need either `ios-deploy`
+or XCode, depending on whether you want to build, test and debug
+your app with XCode or not.
 
 ### Install the Grunt CLI
 
@@ -26,17 +28,26 @@ Bower is a package manager like NPM, mostly used for front-end
 
     npm install -g bower
 
-### Install the PhoneGap CLI
+### Install ios-deploy
 
-[Follow instructions here](http://docs.phonegap.com/en/3.0.0/guide_cli_index.md.html#The%20Cordova%20Command-line%20Interface)
-to install PhoneGap/Cordova.
+If you don't want to use XCode, you can use [`ios-deploy`](https://github.com/phonegap/ios-deploy) to install and debug iPhone apps without using XCode.
+
+    npm install -g ios-deploy
+
+### Install the Cordova CLI
+
+    npm install -g cordova
 
 Then, navigate to this repo's root directory, and generate a
-new phonegap project:
+new cordova project in your `app/` folder:
 
-    phonegap create . com.example.hello HelloWorld
+    cordova create app <bundle_id> <app_name>
 
-This will add relevant files into your project directory:
+For example:
+
+    cordova create app com.example.hello HelloWorld
+
+This will add relevant files into your `app/` directory:
 
     .cordova/
     merges/
@@ -44,28 +55,48 @@ This will add relevant files into your project directory:
     plugins/
     www/
 
-You can now run the following command:
+Next, navigate to your app directory and run the following command:
 
-    phonegap run ios
+    cd app/
 
-This should fire up your iOS Simulator and display a Phonegap
-logo.
+    cordova platform add <platform_name> 
+
+In our case, we want to build an iOS app, so run:
+
+    cordova platform add ios
+
+This will add iOS-specific files into your `app/platforms` directory
+so you can start building your app and running it in simulator.
+
+Next, run:
+
+    cordova prepare
+
+Cordova will build and compile your application.
+
+Finally, run
+
+    cordova emulate ios
+
+This will fire up your iOS Simulator and display a Cordova logo.
 
 ### Installing Dev Dependencies
 
-After you've created a PhoneGap project, navigate to the folder
-and run the following command:
-
-Next, run the following line:
+After you've created your Cordova project, navigate back to the root
+directory and run the following command:
 
     npm install && bower install && grunt build:development
 
 
 ### Get Started
 
-Start the server:
+Start the main grunt task:
 
-    scripts/web-server.js
+    grunt dev
+
+This will build the initial development files, start up a web server,
+and run `watch` on our files so they can can be compiled on the fly as
+they are changed.
 
 Navigate to:
 
@@ -74,7 +105,7 @@ Navigate to:
 Developing in a Webkit-based browser is best. When you're ready to test
 your app in the simulator or on a device, either fire off:
 
-    phonegap run ios
+    cordova run ios
 
 Or open up XCode and build the project from there. 
 
@@ -91,7 +122,7 @@ directory, not the `build/` directory.
 
 When you change any file in the `src/` directory, grunt will notice and
 recompile the proper files and place them into the `www/` directory. The
-`www` directory is then later used by phonegap to prepare the
+`www` directory is then later used by cordova to prepare the
 application to be copied over to the device (or simulator).
 
 `grunt watch` will only watch for files you change and only build out
@@ -118,37 +149,37 @@ The `src/` directory is your main AngularJS project folder. It consists
 of several directories and initial files of interest:
 
     src/
-      css/                   <-- For all LESS files.
-        common/              <-- Place all CSS rules that are
+      |- css/                   <-- For all LESS files.
+        |- common/              <-- Place all CSS rules that are
                                  project-wide.
-          base.less          <-- Main css file.
-        config/              <-- Place LESS configuration files here,
+          |- base.less          <-- Main css file.
+        |- config/              <-- Place LESS configuration files here,
                                  e.g. files with variables.
-          colors.less        <-- Example configuration file for color
+          |- colors.less        <-- Example configuration file for color
                                  variables.
-      html/
-        layouts/            
-          application.tmpl   <-- Main application layout.
-        partials/            <-- All view files loaded
-          home/
-            index.html       <-- Example view file.
-      img/                   <-- for images.
-      js/
-        config/              <-- Configuration root. Place all `.config` run
+      |- html/
+        |- layouts/            
+          |- application.tmpl   <-- Main application layout.
+        |- partials/            <-- All view files loaded
+          |- home/
+            |- index.html       <-- Example view file.
+      |- img/                   <-- for images.
+      |- js/
+        |- config/              <-- Configuration root. Place all `.config` run
                                  methods here, e.g. router.js below.
-          environments/
-            development.js   <-- Development environment global vars.
-            production.js    <-- Production environment global vars.
-          router.js          <-- Main routes.
-          sanitizer.js       <-- Main $compileProvider for link sanitation.
-        controllers/         <-- all Angular controllers
-          home_controller.js <-- Example controller
-        directives/          <-- All directives
-        filters/             <-- All filters
-        modules              <-- All modules
-        services/            <-- All services
-        app.js               <-- Main Angular initialization file.
-        pg.js                <-- PhoneGap initialization class.
+          |- environments/
+            |- development.js   <-- Development environment global vars.
+            |- production.js    <-- Production environment global vars.
+          |- router.js          <-- Main routes.
+          |- sanitizer.js       <-- Main $compileProvider for link sanitation.
+        |- controllers/         <-- all Angular controllers
+          |- home_controller.js <-- Example controller
+        |- directives/          <-- All directives
+        |- filters/             <-- All filters
+        |- modules              <-- All modules
+        |- services/            <-- All services
+        |- app.js               <-- Main Angular initialization file.
+        |- pg.js                <-- PhoneGap initialization class.
 
 
 ### bower.json
@@ -225,6 +256,7 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
+`1.1.0`  | `12-22-13` | Use Cordova instead of PG CLI, upgrade to 3.3.0, update documentation, and manage some breaking changes to directory structure.
 `1.0.2`  | `08-30-13` | Hotfixes.
 `1.0.1`  | `08-30-13` | Re-release as a simple workflow instead of npm module.
 `1.0.0`  | `07-30-13` | Initial version.
