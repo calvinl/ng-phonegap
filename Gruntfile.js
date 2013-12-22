@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
-    appDir: 'www',
+    appDir: 'app/www',
     tmpDir: 'tmp',
     srcDir: 'src',
     bowerDir: 'vendor',

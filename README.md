@@ -10,8 +10,10 @@ An opinionated workflow for building kick-ass mobile apps using
 ### Requirements
 
 To use this tool, you'll need the following installed:
- `npm`, `grunt`, and `cordova` (3.3.0 at this time of this writing).
- Follow the instructions below. You'll also need XCode for iOS.
+`npm`, `grunt`, `cordova` (3.3.0 at this time of this writing).
+Follow the instructions below. You'll also need either `ios-deploy`
+or XCode, depending on whether you want to build, test and debug
+your app with XCode or not.
 
 ### Install the Grunt CLI
 
@@ -26,16 +28,26 @@ Bower is a package manager like NPM, mostly used for front-end
 
     npm install -g bower
 
+### Install ios-deploy
+
+If you don't want to use XCode, you can use [`ios-deploy`](https://github.com/phonegap/ios-deploy) to install and debug iPhone apps without using XCode.
+
+    npm install -g ios-deploy
+
 ### Install the Cordova CLI
 
     npm install -g cordova
 
 Then, navigate to this repo's root directory, and generate a
-new cordova project:
+new cordova project in your `app/` folder:
 
-    cordova create . com.example.hello HelloWorld
+    cordova create app <bundle_id> <app_name>
 
-This will add relevant files into your project directory:
+For example:
+
+    cordova create app com.example.hello HelloWorld
+
+This will add relevant files into your `app/` directory:
 
     .cordova/
     merges/
@@ -43,26 +55,48 @@ This will add relevant files into your project directory:
     plugins/
     www/
 
-You can now run the following command:
+Next, navigate to your app directory and run the following command:
 
-    cordova run ios
+    cd app/
 
-This should fire up your iOS Simulator and display a Cordova
-logo.
+    cordova platform add <platform_name> 
+
+In our case, we want to build an iOS app, so run:
+
+    cordova platform add ios
+
+This will add iOS-specific files into your `app/platforms` directory
+so you can start building your app and running it in simulator.
+
+Next, run:
+
+    cordova prepare
+
+Cordova will build and compile your application.
+
+Finally, run
+
+    cordova emulate ios
+
+This will fire up your iOS Simulator and display a Cordova logo.
 
 ### Installing Dev Dependencies
 
-After you've created a Cordova project, navigate to the folder
-and run the following command:
+After you've created your Cordova project, navigate back to the root
+directory and run the following command:
 
     npm install && bower install && grunt build:development
 
 
 ### Get Started
 
-Start the server:
+Start the main grunt task:
 
-    grunt connect
+    grunt dev
+
+This will build the initial development files, start up a web server,
+and run `watch` on our files so they can can be compiled on the fly as
+they are changed.
 
 Navigate to:
 

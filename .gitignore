@@ -30,7 +30,4 @@ vendor/
 xcuserdata
 
 # cordova stuff
-.cordova/
-platforms
-merges
-plugins
+app/
