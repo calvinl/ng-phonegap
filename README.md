@@ -74,7 +74,7 @@ Next, run:
 
 Cordova will build and compile your application.
 
-Finally, run
+To make sure things are working, fire off the following command:
 
     cordova emulate ios
 
@@ -100,7 +100,7 @@ they are changed.
 
 Navigate to:
 
-    http://localhost:8000/www/index.html
+    http://localhost:9001/www/index.html
 
 Developing in a Webkit-based browser is best. When you're ready to test
 your app in the simulator or on a device, either fire off:
