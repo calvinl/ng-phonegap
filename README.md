@@ -256,6 +256,7 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
+`1.1.1`  | `01-14-14` | Update angular to 1.2.8, readme changes.
 `1.1.0`  | `12-22-13` | Use Cordova instead of PG CLI, upgrade to 3.3.0, update documentation, and manage some breaking changes to directory structure.
 `1.0.2`  | `08-30-13` | Hotfixes.
 `1.0.1`  | `08-30-13` | Re-release as a simple workflow instead of npm module.
