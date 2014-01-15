@@ -150,36 +150,32 @@ of several directories and initial files of interest:
 
     src/
       |- css/                   <-- For all LESS files.
-        |- common/              <-- Place all CSS rules that are
-                                 project-wide.
-          |- base.less          <-- Main css file.
-        |- config/              <-- Place LESS configuration files here,
-                                 e.g. files with variables.
-          |- colors.less        <-- Example configuration file for color
-                                 variables.
+      | |- common/              <-- Project-wide CSS rules.
+      | | |- base.less          <-- Main css file.
+      | |- config/              <-- LESS config files, e.g. vars, mixins.
+      | | |- colors.less        <-- Example config file with color vars.
       |- html/
-        |- layouts/            
-          |- application.tmpl   <-- Main application layout.
-        |- partials/            <-- All view files loaded
-          |- home/
-            |- index.html       <-- Example view file.
-      |- img/                   <-- for images.
+      | |- layouts/            
+      | | |- application.tmpl   <-- Main application layout.
+      | |- partials/            <-- All view files loaded
+      | | |- home/
+      | | | |- index.html       <-- Example view file.
+      |- img/                   <-- Images go here.
       |- js/
-        |- config/              <-- Configuration root. Place all `.config` run
-                                 methods here, e.g. router.js below.
-          |- environments/
-            |- development.js   <-- Development environment global vars.
-            |- production.js    <-- Production environment global vars.
-          |- router.js          <-- Main routes.
-          |- sanitizer.js       <-- Main $compileProvider for link sanitation.
-        |- controllers/         <-- all Angular controllers
-          |- home_controller.js <-- Example controller
-        |- directives/          <-- All directives
-        |- filters/             <-- All filters
-        |- modules              <-- All modules
-        |- services/            <-- All services
-        |- app.js               <-- Main Angular initialization file.
-        |- pg.js                <-- PhoneGap initialization class.
+      | |- config/              <-- Config root. Run methods, route, sanitization, etc.
+      | | |- environments/
+      | | | |- development.js   <-- Development environment global vars.
+      | | | |- production.js    <-- Production environment global vars.
+      | | |- router.js          <-- Router.
+      | | |- sanitizer.js       <-- $compileProvider for link sanitation.
+      | |- controllers/         <-- All Angular controllers
+      | | |- home_controller.js <-- Example controller
+      | |- directives/          <-- All directives
+      | |- filters/             <-- All filters
+      | |- modules              <-- All modules
+      | |- services/            <-- All services
+      | |- app.js               <-- Main Angular initialization file.
+      | |- pg.js                <-- PhoneGap initialization class.
 
 
 ### bower.json
