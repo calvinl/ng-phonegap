@@ -9,10 +9,10 @@ describe('Controller: HomeController', function(){
 
   beforeEach(module(_APP_));
 
-	beforeEach(inject(function($rootScope, $controller){
+  beforeEach(inject(function($rootScope, $controller){
     scope = $rootScope.$new();
     controller = $controller('HomeController', {
-        $scope: scope
+      $scope: scope
     });
     scope.$digest();
   }));
