@@ -96,11 +96,7 @@ Start the main grunt task:
 
 This will build the initial development files, start up a web server,
 and run `watch` on our files so they can can be compiled on the fly as
-they are changed.
-
-Navigate to:
-
-    http://localhost:9001/www/index.html
+they are changed. Browser opens automatically and navigates to `http://localhost:9001/`
 
 Developing in a Webkit-based browser is best. When you're ready to test
 your app in the simulator or on a device, either fire off:
@@ -142,6 +138,29 @@ production. It will also use the the file in
 up things like API routes and/or public keys that differ
 per-environment.
 
+
+### Running unit- and e2e tests
+
+First you need to install some new dependencies, go to projet root and type
+
+    npm install -g karma-cli karma-requirejs karma-jasmine karma-firefox-launcher
+    npm install karma-ng-scenario --save-dev
+
+If you wish to use other than Firefox to run test, then replace karma-firefox-launcher 
+with your preferred launcher. After this you'll need to change \test\karma-*.conf.js files accordingly.
+
+Anfter this run unit tests by typing
+
+    test\test.bat
+
+This will run all tests found in `\test\unit` folder
+
+To run end to end tests, type
+
+    grunt dev /* if not already started */
+    test\e2e-test.bat
+
+This runs all tests found in `\test\e2e`
 
 ### Directory Structure
 
