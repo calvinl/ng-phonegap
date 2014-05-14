@@ -8,5 +8,10 @@
     "angular-touch": "~1.2.8",
     "bootstrap": "~3.0.3",
     "font-awesome": "~3.2.1"
+  },
+  "devDependencies": {
+    "karma-jasmine": "~0.2.2",
+    "angular-mocks": "1.2.x",
+    "karma-ng-scenario": "~0.1.0"
   }
 }
