@@ -141,15 +141,15 @@ per-environment.
 
 ### Running unit- and e2e tests
 
-First you need to install some new dependencies, go to projet root and type
+First you need to install some new dependencies. Go to project root and type
 
     npm install -g karma-cli karma-requirejs karma-jasmine karma-firefox-launcher
     npm install karma-ng-scenario --save-dev
 
 If you wish to use other than Firefox to run test, then replace karma-firefox-launcher 
-with your preferred launcher. After this you'll need to change \test\karma-*.conf.js files accordingly.
+with your preferred launcher. You need to change \test\karma-*.conf.js files accordingly.
 
-Anfter this run unit tests by typing
+After this run unit tests by typing
 
     test\test.bat
 
