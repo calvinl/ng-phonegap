@@ -6,12 +6,8 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     files: [
       '../vendor/angular/angular.js',
-      /*'../vendor/jquery/jquery.min.js',*/
       '../vendor/angular-route/angular-route.js',
       '../vendor/angular-touch/angular-touch.js',
-      /*'../vendor/angular-ui/build/angular-ui.min.js',
-      '../vendor/angular-bootstrap/ui-bootstrap.min.js',
-      '../vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',*/
       '../vendor/angular-mocks/angular-mocks.js',
       '../app/www/js/config/*.js',
       '../app/www/js/*.js',
