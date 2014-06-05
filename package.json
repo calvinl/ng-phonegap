@@ -15,9 +15,10 @@
     "grunt-contrib-copy": "~0.4.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-sass": "~0.3.0",
-	  "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
     "grunt-symlink": "~0.4.0",
-    "grunt-ngmin": "0.0.2"
+    "grunt-ngmin": "0.0.2",
+    "karma-ng-scenario": "~0.1.0"
   },
   "readmeFilename": "README.md",
   "bin": {
