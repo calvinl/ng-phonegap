@@ -31,6 +31,7 @@ var pg = {
 
     angular.element(document).ready(function(){
       angular.bootstrap(document, [_APP_]);
+      document.body.setAttribute('ng-app', _APP_);
     });
 
   }
