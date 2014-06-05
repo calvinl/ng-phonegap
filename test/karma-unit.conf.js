@@ -17,13 +17,13 @@ module.exports = function(config) {
       '../app/www/js/vendor.js'
     ],
     plugins:[
-      'karma-firefox-launcher',
-      'karma-jasmine'      
-    ],    
+      'karma-chrome-launcher',
+      'karma-jasmine'
+    ],
     port: 8080,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Firefox'],
+    browsers: ['Chrome'],
     singleRun: true
   });
 };

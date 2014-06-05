@@ -11,6 +11,6 @@ describe('Home page', function(){
   });
 
   it('should show message', function() {
-    expect(element(el).text()).toEqual(expected);  
+    expect(element(el).text()).toEqual(expected);
   });
 });
