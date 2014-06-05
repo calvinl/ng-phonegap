@@ -125,7 +125,7 @@ module.exports = function(grunt) {
         src: ['<%= appDir %>/img']
       },
       img: {
-        src: ['<%= appDir %>/font']
+        src: ['<%= appDir %>/fonts']
       },
       partials: {
         src: ['<%= appDir %>/html/partials']
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
       },
       fonts: {
         files: [
-          { expand: true, cwd: '<%= bowerDir %>/font-awesome/font/', src: ['**'], dest: '<%= appDir %>/font/' }
+          { expand: true, cwd: '<%= bowerDir %>/font-awesome/fonts/', src: ['**'], dest: '<%= appDir %>/fonts/' }
         ]
       },
       tmp_to_build: {
@@ -292,7 +292,7 @@ module.exports = function(grunt) {
         tasks: ['clean:img', 'copy:img']
       },
       fonts: {
-        files: ['<%= srcDir %>/font/**'],
+        files: ['<%= srcDir %>/fonts/**'],
         tasks: ['clean:fonts', 'copy:fonts']
       },
       partials: {
