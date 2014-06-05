@@ -10,7 +10,7 @@ An opinionated workflow for building kick-ass mobile apps using
 ### Requirements
 
 To use this tool, you'll need the following installed:
-`npm`, `grunt`, `cordova` (3.3.0 at this time of this writing).
+`npm`, `grunt`, `cordova` (3.5.0 at this time of this writing).
 Follow the instructions below. You'll also need either `ios-deploy`
 or XCode, depending on whether you want to build, test and debug
 your app with XCode or not.
@@ -24,15 +24,17 @@ Install the [grunt](http://gruntjs.com) command line interface:
 ### Install Bower
 
 Bower is a package manager like NPM, mostly used for front-end
- components (like jQuery).
+components (like jQuery).
 
     npm install -g bower
 
-### Install ios-deploy
+### Install ios-sim
 
-If you don't want to use XCode, you can use [`ios-deploy`](https://github.com/phonegap/ios-deploy) to install and debug iPhone apps without using XCode.
+If you don't want to use XCode, you can use
+[`ios-sim`](https://github.com/phonegap/ios-sim) to install
+and debug iPhone apps without using XCode.
 
-    npm install -g ios-deploy
+    npm install -g ios-sim
 
 ### Install the Cordova CLI
 
@@ -59,7 +61,7 @@ Next, navigate to your app directory and run the following command:
 
     cd app/
 
-    cordova platform add <platform_name> 
+    cordova platform add <platform_name>
 
 In our case, we want to build an iOS app, so run:
 
@@ -83,10 +85,10 @@ This will fire up your iOS Simulator and display a Cordova logo.
 ### Installing Dev Dependencies
 
 After you've created your Cordova project, navigate back to the root
-directory and run the following command:
+directory and run the following commands:
 
-    npm install && bower install && grunt build:development
-
+    npm install
+    bower install
 
 ### Get Started
 
@@ -103,18 +105,22 @@ your app in the simulator or on a device, either fire off:
 
     cordova run ios
 
-Or open up XCode and build the project from there. 
+Or open up XCode and build the project from there.
 
 You should see "It's working!". You can now start developing your
 app!
 
 ### Start Building
 
-Start Grunt's `watch` process to build on-the-fly. See `Gruntfile.js`
-for more information. Modifying files should happen inside the `src/`
-directory, not the `build/` directory.
+As mentioned above, use the following command to start the dev process:
 
-    grunt watch
+    grunt dev
+
+This is essentially like running the following commands consecutively:
+
+    grunt build:development // builds initial files
+    grunt connect           // starts up a local server
+    grunt watch             // watches your src files for changes
 
 When you change any file in the `src/` directory, grunt will notice and
 recompile the proper files and place them into the `www/` directory. The
@@ -141,26 +147,29 @@ per-environment.
 
 ### Running unit- and e2e tests
 
-First you need to install some new dependencies. Go to project root and type
+First, you'll need to install the karma CLI if you haven't already:
 
-    npm install -g karma-cli karma-requirejs karma-jasmine karma-firefox-launcher
-    npm install karma-ng-scenario --save-dev
+    npm install -g karma-cli
 
-If you wish to use other than Firefox to run test, then replace karma-firefox-launcher 
-with your preferred launcher. You need to change \test\karma-*.conf.js files accordingly.
+If you wish to a browser other than Firefox to run your tests, just replace
+karma-chrome-launcher in `package.json` with your preferred launcher. You
+need to change the settings in `/test/karma-*.conf.js` files accordingly.
 
-After this run unit tests by typing
+#### Unit Tests
 
-    test\test.bat
+The following command will run all tests found in the `/test/unit` folder:
 
-This will run all tests found in `\test\unit` folder
+    test\test.bat // for Windows
+    test/test.sh  // for Linux/Mac OS
 
-To run end to end tests, type
+#### End-to-end (e2e) Tests
 
-    grunt dev /* if not already started */
-    test\e2e-test.bat
+To run all end to end tests in the `/test/e2e` folder, run:
 
-This runs all tests found in `\test\e2e`
+    grunt dev         // if not already started
+    test\e2e-test.bat // for Windows
+    test/e2e-test.sh  // for Linux/Mac OS
+
 
 ### Directory Structure
 
@@ -174,7 +183,7 @@ of several directories and initial files of interest:
       | |- config/              <-- LESS config files, e.g. vars, mixins.
       | | |- colors.less        <-- Example config file with color vars.
       |- html/
-      | |- layouts/            
+      | |- layouts/
       | | |- application.tmpl   <-- Main application layout.
       | |- partials/            <-- All view files loaded
       | | |- home/
@@ -271,6 +280,7 @@ wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 Version  | Date       | Description
 -------- | ---------- | ------------
+`1.2.0`  | `06-04-14` | Working unit and e2e tests. Thanks [mikkoviitala](https://github.com/mikkoviitala). Update Angular to 1.2.16, karma, grunt, bower, Fontawesome.
 `1.1.1`  | `01-14-14` | Update angular to 1.2.8, readme changes.
 `1.1.0`  | `12-22-13` | Use Cordova instead of PG CLI, upgrade to 3.3.0, update documentation, and manage some breaking changes to directory structure.
 `1.0.2`  | `08-30-13` | Hotfixes.
