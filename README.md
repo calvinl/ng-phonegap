@@ -271,8 +271,7 @@ If you're using Vim with `ctrlp`, you can add the following line to your
 `~/.vimrc` file to exclude the `build/`, `tmp/`, and `release/` folders
 from the search directories.
 
-    set
-wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
+    set wildignore+=/path/to/repo/tmp/*,/path/to/repo/build/*,/path/to/repo/release/*
 
 
 
