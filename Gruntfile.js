@@ -23,7 +23,8 @@ module.exports = function(grunt) {
     		options: {
     			port: 9001,
     			base: '<%= appDir %>',
-          open: true
+          open: true,
+          livereload: true
     		}
     	}
     },
@@ -265,6 +266,9 @@ module.exports = function(grunt) {
 
     // watch files, build on the fly for development
     watch: {
+      options: {
+        livereload: true,
+      },
       root: {
         files: ['<%= srcDir %>/*'],
         tasks: ['copy:config']
