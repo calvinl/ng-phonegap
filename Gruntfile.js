@@ -23,8 +23,8 @@ module.exports = function(grunt) {
     		options: {
     			port: 9001,
     			base: '<%= appDir %>',
-          open: true,
-          livereload: true
+    			open: true,
+    			livereload: true
     		}
     	}
     },
