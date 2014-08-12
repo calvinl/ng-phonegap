@@ -158,14 +158,14 @@ Now you're ready to go! Start your simulator by another terminal and watch as
 your app get's started (when the question pops up if you want to use `GapReload`
 answer the question with `OK`):
 
-   cd app && cordova emulate
+    cd app && cordova emulate
 
 Now watch how your app get's hot-deployed as you edit the assets!
 
 You can always remove the Cordova GapReload plugin whenever you don't need
 it anymore::
 
-   grunt rm-gapreload
+    grunt rm-gapreload
 
 Note that the next execution of `idev` task would install this Cordova plugin
 again if it's missing.
