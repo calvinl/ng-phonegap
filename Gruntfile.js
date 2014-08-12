@@ -308,7 +308,7 @@ module.exports = function(grunt) {
       },
       gapreload: {
         files: ['<%= appDir %>/**/*'],
-        tasks: 'gapreload-prepare'
+        tasks: ['gapreload-prepare']
       }
     },
 
