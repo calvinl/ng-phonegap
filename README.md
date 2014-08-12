@@ -107,7 +107,7 @@ your app in the simulator or on a device, either fire off:
 
 Or open up XCode and build the project from there.
 
-You should see "It's working!". You can now start developing your
+You should see "Hello World!". You can now start developing your
 app!
 
 ### Start Building
@@ -144,6 +144,31 @@ production. It will also use the the file in
 up things like API routes and/or public keys that differ
 per-environment.
 
+You can as well start the dev process as your simulator or device is running.
+For this run the `idev` task instead of `dev`:
+
+    grunt idev
+
+Then inside another terminal change to the `app` folder (which you created
+above) and run the Cordova Web Server:
+
+    cd app && cordova serve
+
+Now you're ready to go! Start your simulator by another terminal and watch as
+your app get's started (when the question pops up if you want to use `GapReload`
+answer the question with `OK`):
+
+   cd app && cordova emulate
+
+Now watch how your app get's hot-deployed as you edit the assets!
+
+You can always remove the Cordova GapReload plugin whenever you don't need
+it anymore::
+
+   grunt rm-gapreload
+
+Note that the next execution of `idev` task would install this Cordova plugin
+again if it's missing.
 
 ### Running unit- and e2e tests
 
@@ -255,7 +280,7 @@ Do the same for `_DIRECTIVES_`, `_SERVICES_`, and so on.
 
 # Other Notes
 
-## ngmin 
+## ngmin
 
 Due to AngularJS's dependency injection (DI), minifying files for
 production messes things up since Angular uses argument names to look

@@ -80,7 +80,6 @@ module.exports = function(grunt) {
           '<%= tmpDir %>/js/controllers.js' : ['<%= srcDir %>/js/controllers/*.js', '<%= srcDir %>/js/controllers/**/*.js'],
           '<%= tmpDir %>/js/directives.js'  : ['<%= srcDir %>/js/directives/*.js', '<%= srcDir %>/js/directives/**/*.js'],
           '<%= tmpDir %>/js/filters.js'     : ['<%= srcDir %>/js/filters/*.js', '<%= srcDir %>/js/filters/**/*.js'],
-          '<%= tmpDir %>/js/modules.js'     : ['<%= srcDir %>/js/modules/*.js', '<%= srcDir %>/js/modules/**/*.js'],
           '<%= tmpDir %>/js/services.js'    : ['<%= srcDir %>/js/services/*.js', '<%= srcDir %>/js/services/**/*.js']
         }
       },
@@ -125,7 +124,7 @@ module.exports = function(grunt) {
       img: {
         src: ['<%= appDir %>/img']
       },
-      img: {
+      fonts: {
         src: ['<%= appDir %>/fonts']
       },
       partials: {
@@ -267,7 +266,7 @@ module.exports = function(grunt) {
     // watch files, build on the fly for development
     watch: {
       options: {
-        livereload: true,
+        livereload: true
       },
       root: {
         files: ['<%= srcDir %>/*'],
@@ -306,6 +305,10 @@ module.exports = function(grunt) {
       layouts: {
         files: ['<%= srcDir %>/html/layouts/**'],
         tasks: ['layouts:development']
+      },
+      gapreload: {
+        files: ['<%= appDir %>/**/*'],
+        tasks: 'gapreload-prepare'
       }
     },
 
@@ -333,7 +336,6 @@ module.exports = function(grunt) {
       }
     },
 
-
     config: {
       options: {
         template: '<%= srcDir %>/config.xml.tmpl',
@@ -352,23 +354,40 @@ module.exports = function(grunt) {
       development: {},
       production: {},
       enterprise: {}
+    },
+
+    gapreload: {
+      options: {
+        cwd: '<%= appDir %>',
+        platforms: undefined,
+        SERVER_HOST: 'localhost',
+        SERVER_PORT: 8000,
+        LIVERELOAD_HOST: undefined,
+        LIVERELOAD_PORT: 35729
+      }
     }
 
   });
 
   // load grunt npm modules
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-ngmin');
+  ['grunt-concurrent',
+   'grunt-contrib-clean',
+   'grunt-contrib-copy',
+   'grunt-contrib-concat',
+   'grunt-contrib-less',
+   'grunt-contrib-sass',
+   'grunt-contrib-uglify',
+   'grunt-contrib-cssmin',
+   'grunt-contrib-watch',
+   'grunt-contrib-connect',
+   'grunt-gapreload',
+   'grunt-ngmin'].forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('dev', ['build:development', 'connect', 'watch']);
+
+  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'watch']);
+
+  grunt.registerTask('rm-gapreload', ['gapreload-remove']);
 
   // build HTML files based on target
   grunt.registerMultiTask('layouts', 'Builds an HTML file for angular.', function() {
