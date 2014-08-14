@@ -365,8 +365,14 @@ module.exports = function(grunt) {
         LIVERELOAD_HOST: undefined,
         LIVERELOAD_PORT: 35729
       }
-    }
+    },
 
+    concurrent: {
+      options: {
+        logConcurrentOutput: true
+      },
+      run: ['gapreload-serve', 'watch']
+    }
   });
 
   // load grunt npm modules
@@ -385,7 +391,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', ['build:development', 'connect', 'watch']);
 
-  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'watch']);
+  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'concurrent:run']);
 
   grunt.registerTask('rm-gapreload', ['gapreload-remove']);
 

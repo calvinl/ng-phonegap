@@ -149,18 +149,13 @@ For this run the `idev` task instead of `dev`:
 
     grunt idev
 
-Then inside another terminal change to the `app` folder (which you created
-above) and run the Cordova Web Server:
-
-    cd app && cordova serve
-
-Now you're ready to go! Start your simulator by another terminal and watch as
-your app get's started (when the question pops up if you want to use `GapReload`
-answer the question with `OK`):
+Now start your device simulator in another terminal and watch as your app get's
+started (when the question pops up if you want to use `GapReload` answer the
+question with `OK`):
 
     cd app && cordova emulate
 
-Now watch how your app get's hot-deployed as you edit the assets!
+Now watch how your app get's "hot-deployed" as you edit the assets!
 
 You can always remove the Cordova GapReload plugin whenever you don't need
 it anymore::
