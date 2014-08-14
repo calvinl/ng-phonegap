@@ -149,7 +149,7 @@ For this run the `idev` task instead of `dev`:
 
     grunt idev
 
-Now start your device simulator in another terminal and watch as your app get's
+Now start your device simulator in another terminal and watch as your app gets
 started (when the question pops up if you want to use `GapReload` answer the
 question with `OK`):
 
