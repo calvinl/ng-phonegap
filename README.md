@@ -155,7 +155,7 @@ question with `OK`):
 
     cd app && cordova emulate
 
-Now watch how your app get's "hot-deployed" as you edit the assets!
+Now watch how your app gets "hot-deployed" as you edit the assets!
 
 You can always remove the Cordova GapReload plugin whenever you don't need
 it anymore::
