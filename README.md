@@ -160,7 +160,7 @@ Now watch how your app gets "hot-deployed" as you edit the assets!
 You can always remove the Cordova GapReload plugin whenever you don't need
 it anymore::
 
-    grunt rm-gapreload
+    grunt gapreload-remove
 
 Note that the next execution of `idev` task would install this Cordova plugin
 again if it's missing.
