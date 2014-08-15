@@ -305,10 +305,6 @@ module.exports = function(grunt) {
       layouts: {
         files: ['<%= srcDir %>/html/layouts/**'],
         tasks: ['layouts:development']
-      },
-      gapreload: {
-        files: ['<%= appDir %>/**/*'],
-        tasks: ['gapreload-prepare']
       }
     },
 
@@ -371,7 +367,7 @@ module.exports = function(grunt) {
       options: {
         logConcurrentOutput: true
       },
-      run: ['gapreload-serve', 'watch']
+      run: ['gapreload-serve', 'iwatch']
     }
   });
 
@@ -483,6 +479,23 @@ module.exports = function(grunt) {
     // build main index.html file last
     grunt.task.run('layouts:' + env);
 
+  });
+
+
+  // task for running customized watch with additional gapreload
+  // setup being required while coding on simulator or devices
+  grunt.registerTask('iwatch', function() {
+
+    var config = grunt.config.get('watch');
+
+    // add the gapreload target to the predefined ones above
+    config.gapreload = {
+      files: ['<%= appDir %>/**/*'],
+      tasks: ['gapreload-prepare']
+    };
+    grunt.config.set('watch', config);
+
+    grunt.task.run('watch');
   });
 
 };
