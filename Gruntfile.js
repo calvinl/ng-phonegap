@@ -391,7 +391,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('dev', ['build:development', 'connect', 'watch']);
 
-  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'concurrent:run']);
+  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'concurrent']);
 
   // build HTML files based on target
   grunt.registerMultiTask('layouts', 'Builds an HTML file for angular.', function() {
