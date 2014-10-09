@@ -80,7 +80,6 @@ module.exports = function(grunt) {
           '<%= tmpDir %>/js/controllers.js' : ['<%= srcDir %>/js/controllers/*.js', '<%= srcDir %>/js/controllers/**/*.js'],
           '<%= tmpDir %>/js/directives.js'  : ['<%= srcDir %>/js/directives/*.js', '<%= srcDir %>/js/directives/**/*.js'],
           '<%= tmpDir %>/js/filters.js'     : ['<%= srcDir %>/js/filters/*.js', '<%= srcDir %>/js/filters/**/*.js'],
-          '<%= tmpDir %>/js/modules.js'     : ['<%= srcDir %>/js/modules/*.js', '<%= srcDir %>/js/modules/**/*.js'],
           '<%= tmpDir %>/js/services.js'    : ['<%= srcDir %>/js/services/*.js', '<%= srcDir %>/js/services/**/*.js']
         }
       },
@@ -108,7 +107,7 @@ module.exports = function(grunt) {
         force: true
       },
       tmp: {
-        src: ['<%= tmpDir %>'],
+        src: ['<%= tmpDir %>']
       },
       development: {
         src: ['<%= tmpDir %>', '<%= appDir %>']
@@ -125,7 +124,7 @@ module.exports = function(grunt) {
       img: {
         src: ['<%= appDir %>/img']
       },
-      img: {
+      fonts: {
         src: ['<%= appDir %>/fonts']
       },
       partials: {
@@ -160,6 +159,7 @@ module.exports = function(grunt) {
       },
       fonts: {
         files: [
+          { expand: true, cwd: '<%= srcDir %>/fonts/', src: ['**'], dest: '<%= appDir %>/fonts' },
           { expand: true, cwd: '<%= bowerDir %>/font-awesome/fonts/', src: ['**'], dest: '<%= appDir %>/fonts/' }
         ]
       },
@@ -249,7 +249,7 @@ module.exports = function(grunt) {
             '<%= appDir %>/js/application.js'
           ]
         }
-      },
+      }
     },
 
     // minify css for production
@@ -259,7 +259,7 @@ module.exports = function(grunt) {
           '<%= appDir %>/css/app.css': [
             '<%= tmpDir %>/css/vendor.css',
             '<%= tmpDir %>/css/app.css'
-          ],
+          ]
         }
       }
     },
@@ -267,7 +267,7 @@ module.exports = function(grunt) {
     // watch files, build on the fly for development
     watch: {
       options: {
-        livereload: true,
+        livereload: true
       },
       root: {
         files: ['<%= srcDir %>/*'],
@@ -311,7 +311,7 @@ module.exports = function(grunt) {
 
     layouts: {
       options: {
-        layout: '<%= srcDir %>/html/layouts/application.tmpl',
+        layout: '<%= srcDir %>/html/layouts/application.tmpl'
       },
       development: {
         options: {
