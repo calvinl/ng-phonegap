@@ -333,7 +333,6 @@ module.exports = function(grunt) {
       }
     },
 
-
     config: {
       options: {
         template: '<%= srcDir %>/config.xml.tmpl',
@@ -352,23 +351,44 @@ module.exports = function(grunt) {
       development: {},
       production: {},
       enterprise: {}
-    }
+    },
 
+    gapreload: {
+      options: {
+        cwd: '<%= appDir %>',
+        platforms: undefined,
+        SERVER_HOST: 'localhost',
+        SERVER_PORT: 8000,
+        LIVERELOAD_HOST: undefined,
+        LIVERELOAD_PORT: 35729
+      }
+    },
+
+    concurrent: {
+      options: {
+        logConcurrentOutput: true
+      },
+      run: ['gapreload-serve', 'iwatch']
+    }
   });
 
   // load grunt npm modules
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-ngmin');
+  ['grunt-concurrent',
+   'grunt-contrib-clean',
+   'grunt-contrib-copy',
+   'grunt-contrib-concat',
+   'grunt-contrib-less',
+   'grunt-contrib-sass',
+   'grunt-contrib-uglify',
+   'grunt-contrib-cssmin',
+   'grunt-contrib-watch',
+   'grunt-contrib-connect',
+   'grunt-gapreload',
+   'grunt-ngmin'].forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('dev', ['build:development', 'connect', 'watch']);
+
+  grunt.registerTask('idev', ['build:development', 'gapreload-add', 'concurrent']);
 
   // build HTML files based on target
   grunt.registerMultiTask('layouts', 'Builds an HTML file for angular.', function() {
@@ -460,6 +480,23 @@ module.exports = function(grunt) {
     // build main index.html file last
     grunt.task.run('layouts:' + env);
 
+  });
+
+
+  // task for running customized watch with additional gapreload
+  // setup being required while coding on simulator or devices
+  grunt.registerTask('iwatch', function() {
+
+    var config = grunt.config.get('watch');
+
+    // add the gapreload target to the predefined ones above
+    config.gapreload = {
+      files: ['<%= appDir %>/**/*'],
+      tasks: ['gapreload-prepare']
+    };
+    grunt.config.set('watch', config);
+
+    grunt.task.run('watch');
   });
 
 };
